@@ -19,6 +19,10 @@ def cat_index(request):
     return render(request, 'cats/index.html', {'cats': cats})
 
 
+def cat_detail(request, cat_id):
+    cat = Cat.objects.get(id=cat_id)
+    return render(request, 'cats/detail.html', {'cat': cat})
+
 
 
 
