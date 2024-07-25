@@ -57,6 +57,12 @@
           <tr>
             <td>{{feeding.date}}</td>
             <td>{{feeding.get_meal_display}}</td>
+            <td>
+              <form action="{% url 'delete_feeding' feeding.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn danger">Delete</button>
+              </form>
+            </td>
           </tr>
         {% endfor %}
       </tbody>

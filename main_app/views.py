@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Cat
+from .models import Cat, Feeding
 from .forms import FeedingForm
 
 from django.views.generic import CreateView, UpdateView, DeleteView
@@ -57,7 +57,11 @@ def add_feeding(request, cat_id):
     return redirect('cat-detail', cat_id=cat_id)    
 
 
-
+def delete_feeding(request, feeding_id):
+    feeding = Feeding.objects.get(id=feeding_id)
+    cat_id = feeding.cat.id 
+    feeding.delete()
+    return redirect('cat-detail', cat_id=cat_id)
 
 
 
